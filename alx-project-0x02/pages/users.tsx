@@ -13,44 +13,36 @@ export default function UsersPage({ users }: UsersPageProps) {
   return (
     <div>
       <Header />
-      <div className="p-6 bg-gray-100 min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">Users</h1>
+      <main className="p-6 bg-gray-100 min-h-screen">
+        <h1 className="text-2xl font-bold mb-6">Users</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {users.map((user, index) => (
-            <UserCard key={index} {...user} />
+          {users.map((user, idx) => (
+            <UserCard key={idx} {...user} />
           ))}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
 
-// ✅ Static data fetching at build time
+// ✅ Static Generation — Fetch user data at build time
 export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await res.json();
-    const users: UserProps[] = data.map((user: any) => ({
-      name: user.name,
-      email: user.email,
-      address: {
-        street: user.address.street,
-        suite: user.address.suite,
-        city: user.address.city,
-      },
-    }));
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const data = await res.json();
 
-    return {
-      props: {
-        users,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    return {
-      props: {
-        users: [],
-      },
-    };
-  }
+  const users: UserProps[] = data.map((user: any) => ({
+    name: user.name,
+    email: user.email,
+    address: {
+      street: user.address.street,
+      suite: user.address.suite,
+      city: user.address.city,
+    },
+  }));
+
+  return {
+    props: {
+      users,
+    },
+  };
 };
