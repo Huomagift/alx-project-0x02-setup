@@ -1,17 +1,26 @@
-// components/layout/Header.tsx
-
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Header() {
+  const router = useRouter();
+
+  const linkClass = (path: string) =>
+    `px-4 py-2 hover:text-blue-600 ${
+      router.pathname === path ? 'text-blue-600 font-semibold' : 'text-gray-700'
+    }`;
+
   return (
     <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold text-gray-800">MyApp</h1>
+      <h1 className="text-xl font-bold text-gray-800">MyApp</h1>
       <nav className="space-x-4">
         <Link href="/home">
-          <a className="text-gray-700 hover:text-blue-600">Home</a>
+          <a className={linkClass('/home')}>Home</a>
         </Link>
         <Link href="/about">
-          <a className="text-gray-700 hover:text-blue-600">About</a>
+          <a className={linkClass('/about')}>About</a>
+        </Link>
+        <Link href="/posts">
+          <a className={linkClass('/posts')}>Posts</a>
         </Link>
       </nav>
     </header>
