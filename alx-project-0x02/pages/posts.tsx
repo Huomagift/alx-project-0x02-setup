@@ -1,8 +1,8 @@
 // pages/posts.tsx
 
-import Header from '../components/layout/Header';
-import PostCard from '../components/common/PostCard';
-import { PostProps } from '../interfaces';
+import Header from '@/components/layout/Header';
+import PostCard from '@/components/common/PostCard';
+import { PostProps } from '@/interfaces';
 import { GetStaticProps } from 'next';
 
 interface PostsPageProps {
