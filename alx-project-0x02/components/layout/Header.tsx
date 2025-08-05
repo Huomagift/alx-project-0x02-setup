@@ -13,14 +13,14 @@ export default function Header() {
     <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
       <h1 className="text-xl font-bold text-gray-800">MyApp</h1>
       <nav className="space-x-4">
-        <Link href="/home">
-          <a className={linkClass('/home')}>Home</a>
+        <Link href="/home" className={linkClass('/home')}>
+          Home
         </Link>
-        <Link href="/about">
-          <a className={linkClass('/about')}>About</a>
+        <Link href="/about" className={linkClass('/about')}>
+          About
         </Link>
-        <Link href="/posts">
-          <a className={linkClass('/posts')}>Posts</a>
+        <Link href="/posts" className={linkClass('/posts')}>
+          Posts
         </Link>
       </nav>
     </header>
