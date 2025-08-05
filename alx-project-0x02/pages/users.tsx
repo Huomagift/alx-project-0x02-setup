@@ -6,17 +6,17 @@ import UserCard from '../components/common/UserCard';
 import { UserProps } from '../interfaces';
 
 interface UsersPageProps {
-  users: UserProps[];
+  posts: UserProps[];
 }
 
-export default function UsersPage({ users }: UsersPageProps) {
+export default function UsersPage({ posts }: UsersPageProps) {
   return (
     <div>
       <Header />
       <main className="p-6 bg-gray-100 min-h-screen">
         <h1 className="text-2xl font-bold mb-6">Users (Mocked from Posts)</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {users.map((user, idx) => (
+          {posts.map((user, idx) => (
             <UserCard key={idx} {...user} />
           ))}
         </div>

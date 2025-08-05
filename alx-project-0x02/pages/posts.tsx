@@ -25,7 +25,7 @@ export default function PostsPage({ posts }: PostsPageProps) {
   );
 }
 
-// ✅ Static Generation — Fetch data at build time
+// Static Generation — Fetch data at build time
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=12');
   const data = await res.json();
